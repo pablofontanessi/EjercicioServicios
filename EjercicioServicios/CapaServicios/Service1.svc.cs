@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logicas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,9 +13,10 @@ namespace CapaServicios
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public void AltaAnimal(int id, string Nombre, string especie)
+        public void AltaAnimal(Animal Animal)
         {
-            Logicas.Principal.Instance.AltaAnimial(id,Nombre,especie);
+            Logicas.Animales animales = new Logicas.Animales(Animal.Id,Animal.Nombre,Animal.Especie);
+            Logicas.Principal.Instance.AltaAnimial(animales);
             
         }
 
@@ -23,19 +25,15 @@ namespace CapaServicios
             Logicas.Principal.Instance.EliminarAnimal(id);
         }
 
-        public string GetData(int value)
+        public List<Animales> ListadoAnimales()
         {
-            throw new NotImplementedException();
+            return Logicas.Principal.Instance.ListadoAnimalesOrdenado();
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public void ModificarAnimal(Animal animal)
         {
-            throw new NotImplementedException();
-        }
-
-        public void ModificarAnimal(int id, string Nombre, string especie)
-        {
-            Logicas.Principal.Instance.ModificarAnimal(id,Nombre,especie);
+            Logicas.Animales animales = new Logicas.Animales(animal.Id, animal.Nombre, animal.Especie);
+            Logicas.Principal.Instance.ModificarAnimal(animales);
         }
     }
 }

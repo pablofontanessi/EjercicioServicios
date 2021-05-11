@@ -8,13 +8,14 @@ namespace Logicas
 {
    public class Animales
     {
+       
+
         public Animales(int id, string nombre, string especie)
         {
             this.id = id;
             Nombre = nombre;
             this.especie = especie;
             fechaCreacion = DateTime.Today;
-            Eliminado = false;
         }
 
         public int id { get; set; }

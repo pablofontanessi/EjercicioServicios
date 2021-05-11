@@ -12,19 +12,15 @@ namespace CapaServicios
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
-        string GetData(int value);
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
+        List<Logicas.Animales> ListadoAnimales();
+        
         // TODO: Add your service operations here
         [OperationContract]
-        void AltaAnimal(int id, string Nombre, string especie);
+        void AltaAnimal(Animal animal);
 
         [OperationContract]
-        void ModificarAnimal(int id, string Nombre, string especie);
+        void ModificarAnimal(Animal animal);
         [OperationContract]
         void EliminarAnimal(int id);
         
@@ -33,23 +29,14 @@ namespace CapaServicios
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
-    public class CompositeType
+    public class Animal
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
         [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
+        public int Id { get; set; }
         [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        public string Especie{ get; set; }
+        [DataMember]
+        public string Nombre { get; set; }
+
     }
 }
