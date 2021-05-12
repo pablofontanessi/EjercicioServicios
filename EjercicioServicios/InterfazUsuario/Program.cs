@@ -15,7 +15,7 @@ namespace InterfazUsuario
             string nombre = "asda";
             string especie = "asda";
             
-            client.AltaAnimal(id, nombre, especie);
+           // client.AltaAnimal(id, nombre, especie);
             client.ModificarAnimal(id, "xxdd", "jsjs");
 
             foreach (var item in client.ListadoAnimales())
@@ -23,6 +23,7 @@ namespace InterfazUsuario
                 Console.WriteLine($"El id es {item.Id}, la especie y el nombre es: {item.EspecieYNombre}");
             }
             Console.ReadKey();
+            
         }
     }
 }
