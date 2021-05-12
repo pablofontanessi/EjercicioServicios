@@ -14,10 +14,15 @@ namespace InterfazUsuario
             int id = 1;
             string nombre = "asda";
             string especie = "asda";
+            
             client.AltaAnimal(id, nombre, especie);
             client.ModificarAnimal(id, "xxdd", "jsjs");
-            client.EliminarAnimal(id);
-            
+
+            foreach (var item in client.ListadoAnimales())
+            {
+                Console.WriteLine($"El id es {item.Id}, la especie y el nombre es: {item.EspecieYNombre}");
+            }
+            Console.ReadKey();
         }
     }
 }

@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\ServiceReference1\InterfazUsuario.ServiceReference1.Animal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\Service1.wsdl" />
     <None Include="Connected Services\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
@@ -74,12 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CapaServicios\CapaServicios.csproj">
-      <Project>{269ecd53-eb0c-4cb0-9efe-f27e605d463c}</Project>
-      <Name>CapaServicios</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />

@@ -9,35 +9,92 @@
 //------------------------------------------------------------------------------
 
 namespace InterfazUsuario.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Animal", Namespace="http://schemas.datacontract.org/2004/07/CapaServicios")]
+    [System.SerializableAttribute()]
+    public partial class Animal : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EspecieYNombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EspecieYNombre {
+            get {
+                return this.EspecieYNombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EspecieYNombreField, value) != true)) {
+                    this.EspecieYNombreField = value;
+                    this.RaisePropertyChanged("EspecieYNombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        string GetData(int value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListadoAnimales", ReplyAction="http://tempuri.org/IService1/ListadoAnimalesResponse")]
+        InterfazUsuario.ServiceReference1.Animal[] ListadoAnimales();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        CapaServicios.CompositeType GetDataUsingDataContract(CapaServicios.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<CapaServicios.CompositeType> GetDataUsingDataContractAsync(CapaServicios.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListadoAnimales", ReplyAction="http://tempuri.org/IService1/ListadoAnimalesResponse")]
+        System.Threading.Tasks.Task<InterfazUsuario.ServiceReference1.Animal[]> ListadoAnimalesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AltaAnimal", ReplyAction="http://tempuri.org/IService1/AltaAnimalResponse")]
-        void AltaAnimal(int id, string Nombre, string especie);
+        void AltaAnimal(int Id, string Nombre, string Especie);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AltaAnimal", ReplyAction="http://tempuri.org/IService1/AltaAnimalResponse")]
-        System.Threading.Tasks.Task AltaAnimalAsync(int id, string Nombre, string especie);
+        System.Threading.Tasks.Task AltaAnimalAsync(int Id, string Nombre, string Especie);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModificarAnimal", ReplyAction="http://tempuri.org/IService1/ModificarAnimalResponse")]
-        void ModificarAnimal(int id, string Nombre, string especie);
+        void ModificarAnimal(int Id, string Nombre, string Especie);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModificarAnimal", ReplyAction="http://tempuri.org/IService1/ModificarAnimalResponse")]
-        System.Threading.Tasks.Task ModificarAnimalAsync(int id, string Nombre, string especie);
+        System.Threading.Tasks.Task ModificarAnimalAsync(int Id, string Nombre, string Especie);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/EliminarAnimal", ReplyAction="http://tempuri.org/IService1/EliminarAnimalResponse")]
         void EliminarAnimal(int id);
@@ -73,36 +130,28 @@ namespace InterfazUsuario.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
+        public InterfazUsuario.ServiceReference1.Animal[] ListadoAnimales() {
+            return base.Channel.ListadoAnimales();
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
+        public System.Threading.Tasks.Task<InterfazUsuario.ServiceReference1.Animal[]> ListadoAnimalesAsync() {
+            return base.Channel.ListadoAnimalesAsync();
         }
         
-        public CapaServicios.CompositeType GetDataUsingDataContract(CapaServicios.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public void AltaAnimal(int Id, string Nombre, string Especie) {
+            base.Channel.AltaAnimal(Id, Nombre, Especie);
         }
         
-        public System.Threading.Tasks.Task<CapaServicios.CompositeType> GetDataUsingDataContractAsync(CapaServicios.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task AltaAnimalAsync(int Id, string Nombre, string Especie) {
+            return base.Channel.AltaAnimalAsync(Id, Nombre, Especie);
         }
         
-        public void AltaAnimal(int id, string Nombre, string especie) {
-            base.Channel.AltaAnimal(id, Nombre, especie);
+        public void ModificarAnimal(int Id, string Nombre, string Especie) {
+            base.Channel.ModificarAnimal(Id, Nombre, Especie);
         }
         
-        public System.Threading.Tasks.Task AltaAnimalAsync(int id, string Nombre, string especie) {
-            return base.Channel.AltaAnimalAsync(id, Nombre, especie);
-        }
-        
-        public void ModificarAnimal(int id, string Nombre, string especie) {
-            base.Channel.ModificarAnimal(id, Nombre, especie);
-        }
-        
-        public System.Threading.Tasks.Task ModificarAnimalAsync(int id, string Nombre, string especie) {
-            return base.Channel.ModificarAnimalAsync(id, Nombre, especie);
+        public System.Threading.Tasks.Task ModificarAnimalAsync(int Id, string Nombre, string Especie) {
+            return base.Channel.ModificarAnimalAsync(Id, Nombre, Especie);
         }
         
         public void EliminarAnimal(int id) {

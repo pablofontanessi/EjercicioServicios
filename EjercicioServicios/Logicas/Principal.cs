@@ -23,20 +23,20 @@ namespace Logicas
         }
         List<Animales> ListadoAnimales = new List<Animales>();
 
-        public void AltaAnimial(Animales animales)
+        public void AltaAnimial(int id, string Nombre, string especie)
         {
-            Animales animal = new Animales(animales.id,animales.Nombre,animales.especie);
+            Animales animal = new Animales(id,Nombre,especie);
             ListadoAnimales.Add(animal);
         }
         public void EliminarAnimal(int id)
         {
             ListadoAnimales.Find(x => x.id == id).Eliminado = true;
         }
-        public void ModificarAnimal(Animales animales)
+        public void ModificarAnimal(int id, string Nombre, string especie)
         {
-            ListadoAnimales.Find(x => x.id == animales.id).fechaModificacion = DateTime.Today;
-            ListadoAnimales.Find(x => x.id == animales.id).Nombre = animales.Nombre;
-            ListadoAnimales.Find(x => x.id == animales.id).especie = animales.especie;
+            ListadoAnimales.Find(x => x.id == id).fechaModificacion = DateTime.Today;
+            ListadoAnimales.Find(x => x.id == id).Nombre = Nombre;
+            ListadoAnimales.Find(x => x.id == id).especie = especie;
         }
         public List<Animales> ListadoAnimalesOrdenado()
         {

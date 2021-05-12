@@ -13,14 +13,14 @@ namespace CapaServicios
     public interface IService1
     {
         [OperationContract]
-        List<Logicas.Animales> ListadoAnimales();
+        List<Animal> ListadoAnimales();
         
         // TODO: Add your service operations here
         [OperationContract]
-        void AltaAnimal(Animal animal);
+        void AltaAnimal(int Id, string Nombre, string Especie);
 
         [OperationContract]
-        void ModificarAnimal(Animal animal);
+        void ModificarAnimal(int Id, string Nombre, string Especie);
         [OperationContract]
         void EliminarAnimal(int id);
         
@@ -31,12 +31,17 @@ namespace CapaServicios
     [DataContract]
     public class Animal
     {
+        public Animal(int id, string nombre, string especie)
+        {
+            Id = id;
+            EspecieYNombre = especie + " " + nombre;
+        }
+
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public string Especie{ get; set; }
-        [DataMember]
-        public string Nombre { get; set; }
+        public string EspecieYNombre{ get; set; }
+        
 
     }
 }
