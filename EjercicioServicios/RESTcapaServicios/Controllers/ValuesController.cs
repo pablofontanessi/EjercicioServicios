@@ -17,9 +17,14 @@ namespace RESTcapaServicios.Controllers
         {
             return "value";
         }
-        public List<Models.Animal> Get()
+        public string Get()
         {
-            return Models.Animal.ConvertirACapaServicio(Logicas.Principal.Instance.ListadoAnimalesOrdenado()); 
+            foreach (var item in Models.Animal.ConvertirACapaServicio(Logicas.Principal.Instance.ListadoAnimalesOrdenado()))
+            {
+                return $"El id animal es {item.id} y la especie y el nombre: {item.NombreYApellido} ";
+            }
+            return "no hay animales";
+            
         }
 
         // POST api/values
